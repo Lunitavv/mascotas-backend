@@ -1,0 +1,7 @@
+package com.example.Mascotas.direccion;
+
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface DireccionRepository extends CrudRepository<Direccion, Long> {
+}
