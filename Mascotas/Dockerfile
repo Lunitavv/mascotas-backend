@@ -4,14 +4,14 @@ WORKDIR /app
 
 # Copiar archivos de Maven
 COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
+COPY ../mvnw pom.xml ./
 RUN chmod +x mvnw
 
 # Descargar dependencias (esto ayuda a que las builds sean más rápidas después)
 RUN ./mvnw dependency:go-offline -B
 
 # Copiar el código fuente y construir el jar
-COPY src ./src
+COPY ../src ./src
 RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Run
