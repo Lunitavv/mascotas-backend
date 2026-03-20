@@ -9,9 +9,10 @@ COPY . .
 
 # 2. Convertimos el formato de Windows a Linux y damos permisos
 RUN dos2unix mvnw && chmod +x mvnw
-
+# Cambia la línea 13 por esta:
+RUN ./mvnw clean package -DskipTests -B -e -X
 # 3. Construimos el proyecto (Añadimos -B para modo no interactivo)
-RUN ./mvnw clean package -DskipTests -B
+
 
 # Etapa de ejecución
 FROM eclipse-temurin:17-jre-alpine
