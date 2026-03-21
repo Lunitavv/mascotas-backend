@@ -9,10 +9,15 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+        // Permitir CORS en todos los endpoints (/**)
         registry.addMapping("/**")
-                .allowedOriginPatterns("*") // Esto es más flexible que allowedOrigins
+                // Permitimos cualquier origen (Localhost y el futuro link de Netlify)
+                .allowedOriginPatterns("*")
+                // Permitimos los métodos necesarios
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                // Permitimos cualquier cabecera
                 .allowedHeaders("*")
+                // Permitir envío de credenciales (cookies, auth headers)
                 .allowCredentials(true);
     }
 }
